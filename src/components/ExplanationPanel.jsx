@@ -1,4 +1,15 @@
+/**
+ * ExplanationPanel component for displaying DSA concepts and time complexities
+ * Provides educational content about array operations and their algorithmic properties
+ * @param {Object} props - Component props
+ * @param {string} props.operation - Current operation to display explanation for
+ * @returns {JSX.Element} Rendered explanation panel with concept details and time complexity table
+ */
 const ExplanationPanel = ({ operation }) => {
+  /**
+   * Object containing explanations for different array operations
+   * @type {Object.<string, string>}
+   */
   const explanations = {
     add: "Appending (O(1)): Directly adds to end without shifting elements",
     remove: "Popping (O(1)): Removes last element without index recalculation",

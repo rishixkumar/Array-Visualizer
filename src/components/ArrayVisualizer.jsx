@@ -1,6 +1,13 @@
 import React, { useState, useRef } from 'react';
 
-// ControlSection component for organized button/input groups
+/**
+ * ControlSection component for organized button/input groups
+ * @param {Object} props - Component props
+ * @param {string} props.title - Section title
+ * @param {Array<Object>} props.buttons - Array of button configurations
+ * @param {Array<Object>} props.inputs - Array of input configurations
+ * @returns {JSX.Element} Rendered control section
+ */
 const ControlSection = ({ title, buttons = [], inputs = [] }) => (
   <div style={{
     backgroundColor: '#2d3436',
@@ -55,7 +62,10 @@ const ControlSection = ({ title, buttons = [], inputs = [] }) => (
   </div>
 );
 
-// Time complexity panel
+/**
+ * TimeComplexityPanel component displaying array operation time complexities
+ * @returns {JSX.Element} Rendered time complexity table
+ */
 const TimeComplexityPanel = () => (
   <div style={{
     backgroundColor: '#1a535c',
@@ -83,7 +93,12 @@ const TimeComplexityPanel = () => (
   </div>
 );
 
-// Pseudocode panel
+/**
+ * PseudocodePanel component showing algorithm pseudocode for different operations
+ * @param {Object} props - Component props
+ * @param {string} props.operation - Current operation to display pseudocode for
+ * @returns {JSX.Element} Rendered pseudocode panel
+ */
 const PseudocodePanel = ({ operation }) => {
   const pseudocodes = {
     add: `ALGORITHM: Array Push
@@ -146,38 +161,86 @@ END`
   );
 };
 
-// MAIN COMPONENT
+/**
+ * Main ArrayVisualizer component for interactive array operations visualization
+ * Provides animated demonstrations of array operations including add, remove, insert, search, and traversal
+ * @returns {JSX.Element} Complete array visualizer interface
+ */
 const ArrayVisualizer = () => {
+  // Array state and basic operation states
+  /** @type {[number[], Function]} Array of numbers and setter function */
   const [array, setArray] = useState([5, 2, 8, 1, 9, 3]);
+  
+  /** @type {[number, Function]} Index of highlighted element for search operations */
   const [highlightIndex, setHighlightIndex] = useState(-1);
+  
+  /** @type {[string, Function]} Value to insert into array */
   const [insertValue, setInsertValue] = useState('');
+  
+  /** @type {[string, Function]} Index position for insertion */
   const [insertIndex, setInsertIndex] = useState('');
+  
+  /** @type {[string, Function]} Value to search for in array */
   const [searchValue, setSearchValue] = useState('');
+  
+  /** @type {[number, Function]} Current index during array traversal */
   const [traversalIndex, setTraversalIndex] = useState(-1);
+  
+  /** @type {[boolean, Function]} Whether array traversal is currently active */
   const [isTraversing, setIsTraversing] = useState(false);
+  
+  /** @type {[string, Function]} Current operation being performed */
   const [currentOperation, setCurrentOperation] = useState('');
+  
+  /** @type {React.MutableRefObject<number[]>} Reference to store timeout IDs for cleanup */
   const timeoutIdsRef = useRef([]);
+  
+  /** @type {React.MutableRefObject<boolean>} Reference to track traversal state */
   const isTraversingRef = useRef(false);
 
-  // Animation states for "add to end"
+  // Animation states for "add to end" operation
+  /** @type {[boolean, Function]} Whether add animation is currently running */
   const [isAddAnimating, setIsAddAnimating] = useState(false);
+  
+  /** @type {[number, Function]} Index being animated during add operation */
   const [addAnimationIndex, setAddAnimationIndex] = useState(-1);
+  
+  /** @type {[number|null, Function]} Value pending to be added to array */
   const [pendingValue, setPendingValue] = useState(null);
+  
+  /** @type {[boolean, Function]} Whether to show new cell animation */
   const [showNewCell, setShowNewCell] = useState(false);
 
-  // Animation states for "remove last"
+  // Animation states for "remove last" operation
+  /** @type {[boolean, Function]} Whether remove animation is currently running */
   const [isRemoveAnimating, setIsRemoveAnimating] = useState(false);
+  
+  /** @type {[number, Function]} Index being animated during remove operation */
   const [removeAnimationIndex, setRemoveAnimationIndex] = useState(-1);
+  
+  /** @type {[number, Function]} Index of element fading out during remove */
   const [removeFadeIndex, setRemoveFadeIndex] = useState(-1);
 
-  // Animation states for "insert at index"
+  // Animation states for "insert at index" operation
+  /** @type {[boolean, Function]} Whether insert animation is currently running */
   const [isInsertAnimating, setIsInsertAnimating] = useState(false);
+  
+  /** @type {[number, Function]} Index being animated during insert operation */
   const [insertAnimationIndex, setInsertAnimationIndex] = useState(-1);
+  
+  /** @type {[number|null, Function]} Value pending to be inserted */
   const [pendingInsertValue, setPendingInsertValue] = useState(null);
+  
+  /** @type {[number, Function]} Position where value will be inserted */
   const [pendingInsertAt, setPendingInsertAt] = useState(-1);
+  
+  /** @type {[boolean, Function]} Whether to show insert cell animation */
   const [showInsertCell, setShowInsertCell] = useState(false);
 
-  // Helper for disabling all controls during animation
+  /**
+   * Helper function to check if any animation is currently running
+   * @type {boolean}
+   */
   const isAnyAnimating = isAddAnimating || isRemoveAnimating || isInsertAnimating;
 
   return (

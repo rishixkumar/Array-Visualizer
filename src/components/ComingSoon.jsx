@@ -1,5 +1,21 @@
 import React from 'react';
 
+/**
+ * ComingSoon component
+ *
+ * Displays a visually distinct section listing planned and upcoming features for the array visualizer project.
+ * This section serves both as a public roadmap for users and a personal reminder for future development.
+ *
+ * Features listed include sorting visualizations, bar chart mode, multi-array support, export/import, undo/redo,
+ * index labels, color customization, accessibility, notifications, step-by-step explanations, performance metrics,
+ * matrix support, linked list mode, and a user guide.
+ *
+ * @component
+ * @returns {JSX.Element} Rendered Coming Soon roadmap section
+ *
+ * @example
+ * <ComingSoon />
+ */
 const ComingSoon = () => (
   <div style={{
     backgroundColor: '#2d3436',
