@@ -1,13 +1,19 @@
+/* ========================================
+   INDEX.CSS - Global Styles
+   ======================================== */
+
+/* Global body styling - reset margins and set font family */
 body {
-  margin: 0;
+  margin: 0; /* Remove default browser margins */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    sans-serif; /* System font stack for optimal readability */
+  -webkit-font-smoothing: antialiased; /* Smooth font rendering on WebKit browsers */
+  -moz-osx-font-smoothing: grayscale; /* Smooth font rendering on Firefox/macOS */
 }
 
+/* Code element styling - monospace font for code blocks */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    monospace; /* Monospace font stack for code readability */
 }

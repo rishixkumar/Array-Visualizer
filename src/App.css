@@ -1,50 +1,64 @@
+/* ========================================
+   APP.CSS - Main Application Styles
+   ======================================== */
+
+/* Main App container - centers all content */
 .App {
   text-align: center;
 }
 
+/* React logo styling - prevents interaction and sets size */
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  height: 40vmin; /* Responsive height based on viewport */
+  pointer-events: none; /* Disables mouse interactions */
 }
 
+/* Animation for React logo - only runs if user hasn't disabled motion */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 20s linear; /* Continuous rotation animation */
   }
 }
 
+/* Header section styling - full viewport height with centered content */
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #282c34; /* Dark background color */
+  min-height: 100vh; /* Full viewport height */
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  font-size: calc(10px + 2vmin); /* Responsive font size */
+  color: white; /* White text color */
 }
 
+/* Link styling within the app */
 .App-link {
-  color: #61dafb;
+  color: #61dafb; /* React blue color for links */
 }
 
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+/* Logo rotation animation - creates spinning effect */
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(0deg); /* Starting position */
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(360deg); /* Full rotation */
   }
 }
 
-
+/* Slide-in animation for array elements - used in ArrayVisualizer */
 @keyframes slideIn {
   from {
-    opacity: 0;
-    transform: translateX(-20px) scale(0.8);
+    opacity: 0; /* Start invisible */
+    transform: translateX(-20px) scale(0.8); /* Start off-screen and smaller */
   }
   to {
-    opacity: 1;
-    transform: translateX(0) scale(1.1);
+    opacity: 1; /* End fully visible */
+    transform: translateX(0) scale(1.1); /* End in position and slightly larger */
   }
 }
